@@ -7,13 +7,12 @@ jobs:
     steps:
       - checkout
       - run:
-          TAG = 2.6.20
           name: Build Docker Image
           command: |
+            TAG=2.6.20
             docker build -t myapp-image:$TAG .
 
 workflows:
   build_docker_image:
     jobs:
       - build
-  
