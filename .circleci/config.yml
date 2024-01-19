@@ -15,6 +15,9 @@ jobs:
           name: Docker version
           command: docker version
       - run:
+          name: Start docker engine
+          command: sudo systemctl start docker
+      - run:
           name: Build Docker Image
           command: |
             TAG=2.6.20
