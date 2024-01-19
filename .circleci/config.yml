@@ -7,6 +7,10 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Start Docker Service
+          command: |
+            sudo service docker start
+      - run:
           name: Build Docker Image
           command: |
             TAG=2.6.20
