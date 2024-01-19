@@ -3,19 +3,9 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: circleci/node:10.24-buster-browsers
+      - image: cimg/node:14.17-browsers
     steps:
       - checkout
-      - run:
-          name: Install Docker
-          command: |
-            sudo apt-get update --allow-releaseinfo-change
-            sudo apt-get install -y docker.io
-      - run:
-          name: Start systemd
-          command: |
-            sudo systemctl enable docker
-            sudo systemctl start docker
       - run:
           name: Docker version
           command: docker version

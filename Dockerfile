@@ -1,5 +1,5 @@
 #Docker sauvegarde tous les fichiers dans les layers, il rebuild l'image si ces fichiers changenet
-FROM circleci/node:10.24-buster-browsers
+FROM cimg/node:14.17-browsers
 RUN  addgroup app  && adduser -S -G app app
 
 USER app
