@@ -12,11 +12,11 @@ jobs:
             sudo apt-get update --allow-releaseinfo-change
             sudo apt-get install -y docker.io
       - run:
-          name: Docker version
-          command: docker version
-      - run:
           name: Start docker engine
           command: sudo systemctl start docker
+      - run:
+          name: Docker version
+          command: docker version
       - run:
           name: Build Docker Image
           command: |
