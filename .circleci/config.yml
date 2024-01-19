@@ -1,7 +1,7 @@
 version: 2
 
 jobs:
-  build_test:
+  build:
     docker:
       - image: node:10.19.0-alpine3.11
 
