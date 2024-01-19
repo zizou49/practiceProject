@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: node:10.19.0-alpine3.11
+      - image: circleci/node:10.24-buster-browsers
     steps:
       - checkout
       - run:
