@@ -3,17 +3,17 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: cimg/go:1.17
+      - image: cimg/node:14.17-browsers
     steps:
       - checkout
       - run:
           name: Docker version
-          command: docker version
-      # - run:
-      #     name: Build Docker Image
-      #     command: |
-      #       TAG=2.6.20
-      #       docker build -t myapp-image:$TAG .
+          command: sudo service docker start
+      - run:
+          name: Build Docker Image
+          command: |
+            TAG=2.6.20
+            docker build -t myapp-image:$TAG .
 
 workflows:
   build_docker_image:
