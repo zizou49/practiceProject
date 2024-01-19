@@ -11,14 +11,11 @@ jobs:
           command: |
             sudo apt-get update --allow-releaseinfo-change
             sudo apt-get install -y docker.io
-       - run:
+      - run:
           name: Start systemd
           command: |
-            sudo systemctl enable systemd
-            sudo systemctl start systemd
-      - run:
-          name: Start docker engine
-          command: sudo systemctl start docker
+            sudo systemctl enable docker
+            sudo systemctl start docker
       - run:
           name: Docker version
           command: docker version
