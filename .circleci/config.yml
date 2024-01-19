@@ -6,10 +6,14 @@ jobs:
       - image: circleci/node:10.24-buster-browsers
     steps:
       - checkout
-      - run:
-          name: Start Docker Service
+       - run:
+          name: Install Docker
           command: |
-            sudo service docker start
+            sudo apt-get update
+            sudo apt-get install -y docker.io
+      - run:
+          name: Docker version
+          command: docker version
       - run:
           name: Build Docker Image
           command: |
