@@ -6,7 +6,7 @@ jobs:
       - image: circleci/node:10.24-buster-browsers
     steps:
       - checkout
-       - run:
+      - run:
           name: Install Docker
           command: |
             sudo apt-get update
