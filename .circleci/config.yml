@@ -4,11 +4,14 @@ jobs:
   build:
     docker:
       - image: cimg/node:14.17-browsers
+    
+    working_directory: ~/app
+
     steps:
       - checkout
       - run:
           name: Docker version
-          command: whoami
+          command: ls
       
 workflows:
   build_docker_image:
