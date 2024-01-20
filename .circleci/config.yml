@@ -4,16 +4,16 @@ jobs:
   build:
     docker:
       - image: cimg/node:14.17-browsers
-    
+
     working_directory: ~/app
 
     steps:
       - checkout
       - run:
-          name: Docker version
-          command: pwd
-      
+          name: Build Docker image
+          command: docker build -t react-app:1 .
+
 workflows:
-  build_docker_image:
+  build_and_test:
     jobs:
       - build

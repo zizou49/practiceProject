@@ -1,7 +1,9 @@
 #Docker sauvegarde tous les fichiers dans les layers, il rebuild l'image si ces fichiers changenet
 FROM cimg/node:14.17-browsers
-RUN  addgroup app  && adduser -S -G app app
+USER root
+RUN groupadd -g 1000 app && useradd -u 1000 -g app -m app
 
+#RUN  addgroup app  && adduser -S -G app app
 USER app
 WORKDIR /app
 #last 'app': name of user
