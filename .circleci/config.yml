@@ -8,7 +8,7 @@ jobs:
       - checkout
       - run:
           name: Docker version
-          command: sudo service docker start
+          command: sudo /etc/init.d/docker start
       - run:
           name: Build Docker Image
           command: |
