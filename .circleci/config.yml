@@ -8,13 +8,8 @@ jobs:
       - checkout
       - run:
           name: Docker version
-          command: sudo /etc/init.d/docker start
-      - run:
-          name: Build Docker Image
-          command: |
-            TAG=2.6.20
-            docker build -t myapp-image:$TAG .
-
+          command: whoami
+      
 workflows:
   build_docker_image:
     jobs:
