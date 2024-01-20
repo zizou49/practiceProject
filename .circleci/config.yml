@@ -11,7 +11,7 @@ jobs:
       - checkout
       - run:
           name: Docker version
-          command: ls
+          command: pwd
       
 workflows:
   build_docker_image:
