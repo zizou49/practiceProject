@@ -14,6 +14,6 @@ jobs:
       # build and push Docker image
       - run: |
           TAG=latest
-          docker build -t react-app:$TAG .
-          # echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
-          # docker push CircleCI-Public/circleci-demo-docker:$TAG
+          docker build -t sangukou/react-app:$TAG .
+          echo $DOCKER_PAT | docker login -u $DOCKER_USER --password-stdin
+          docker push sangukou/react-app:$TAG

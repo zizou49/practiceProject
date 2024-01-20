@@ -31,7 +31,10 @@ EXPOSE 3000
 #CMD npm start
 #with synatx array no other porcess sh is launched:exec form
 #we can ovverdide CMD when run conatiner with different colmmand exp: docker run image echo hello, in this case npm start will not be launched
+
 CMD ["npm","start"]
+
+
 #with CMD we have more flexiblity and we can ovverdide to launch on other command
 #ENTRY is used if we are sure that a spcific command or script should be lanched when run a container
-ENTRYPOINT [ "npm","start" ]
+#ENTRYPOINT [ "npm","start" ]
