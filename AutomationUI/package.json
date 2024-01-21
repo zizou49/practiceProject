@@ -1,0 +1,27 @@
+{
+  "name": "automationui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "localization": "npx cypress run --spec ./cypress/e2e/1-getting-started/todo.cy.js"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zizou49/nodeApp.git"
+  },
+  "author": "zied",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zizou49/nodeApp/issues"
+  },
+  "homepage": "https://github.com/zizou49/nodeApp#readme",
+  "devDependencies": {
+    "cypress": "^13.6.3"
+  },
+  "dependencies": {
+    "npx": "^10.2.2"
+  }
+}
