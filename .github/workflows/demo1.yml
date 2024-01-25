@@ -2,17 +2,17 @@ name: events Demo 1
 on:
     pull_request:
         types: 
-          - opened
+          - opened #activity type
         branches:
           - main
-          #- 'dev-*' # dev-new dev-this-is-new
-          #- 'feat/**' #feat/new feat/new/button
+          - 'dev-*' # dev-new dev-this-is-new
+          - 'feat/**' #feat/new feat/new/button
     workflow_dispatch:
     push:
       branches:
         - main
-        #- 'dev-*' # dev-new dev-this-is-new
-        #- 'feat/**' #feat/new feat/new/button
+        - 'dev-*' # dev-new dev-this-is-new  filter activity
+        - 'feat/**' #feat/new feat/new/button
       paths-ignore:
         - '.github/workflows/*'
 jobs:
