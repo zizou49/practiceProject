@@ -1,5 +1,5 @@
 name: deploy app react
-on: push
+on: workflow_dispatch
 jobs:
     codequality:
         runs-on: ubuntu-latest
