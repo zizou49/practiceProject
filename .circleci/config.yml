@@ -48,7 +48,7 @@ jobs:
           docker_layer_caching: true
       - run: ls
       - run: |
-           docker build -t sangukou/react-app:latest .
+           docker run sangukou/react-app:latest
   
   start-tests:
     docker:
@@ -58,7 +58,7 @@ jobs:
       - setup_remote_docker:
           docker_layer_caching: true
       - run: |
-           docker build -t sangukou/my-cypress:latest .
+          docker run sangukou/my-cypress:latest
 
   notify:
     docker:
