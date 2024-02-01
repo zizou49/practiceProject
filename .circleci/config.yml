@@ -32,25 +32,18 @@ executors:
       image: ubuntu-2004:202010-01
       docker_layer_caching: true
 
-commands:
-  login-to-doker-hub:
-    description: "Login to docker hub"
-    steps:
-      - run:
-          name: Authentication
-          command: |
-              echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
             
 jobs:
   prepare-server:
     docker:
       - image: sangukou/react-app:latest
+        auth:
+          username: $DOCKER_USERNAME
+          password: $DOCKER_PASSWORD
+
 
     steps:
-      - run:
-          name: Login to Docker Hub
-          command: login-to-doker-hub
       - run:
           name: Pull Docker image
           command: |
@@ -60,7 +53,6 @@ jobs:
     docker:
       - image: sangukou/my-cypress
     steps:
-      - login-to-doker-hub
       - run:
           name: run tests
           command: |
