@@ -32,7 +32,7 @@ EXPOSE 3000
 #with synatx array no other porcess sh is launched:exec form
 #we can ovverdide CMD when run conatiner with different colmmand exp: docker run image echo hello, in this case npm start will not be launched
 
-CMD ["npm","start"]
+CMD ["npm","start","&"]
 
 
 #with CMD we have more flexiblity and we can ovverdide to launch on other command
