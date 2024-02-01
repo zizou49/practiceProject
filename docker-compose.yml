@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  cypresstests:
+    depends_on: 
+      - app
+    environment:
+      APP_URL: http://app:3000  # Use the correct port
+    build: ./AutomationUI
+   
+  app: 
+    build: .
