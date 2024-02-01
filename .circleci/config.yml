@@ -47,11 +47,10 @@ jobs:
       - run:
           name: Pull Docker image
           command: |
-              docker pull sangukou/react-app:latest
-
+              pwd
   start-tests:
     docker:
-      - image: sangukou/my-cypress
+      - image: sangukou/my-cypress:latest
     steps:
       - run:
           name: run tests
