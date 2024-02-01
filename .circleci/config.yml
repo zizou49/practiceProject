@@ -26,10 +26,10 @@ version: 2.1
 orbs:
   slack: circleci/slack@4.12.6
 
-executors:
-  ubuntu-22-04:
-    machine:
-      image: ubuntu-2004:202010-01
+# executors:
+#   ubuntu-22-04:
+#     machine:
+#       image: ubuntu-2004:202010-01
 #       docker_layer_caching: true
 
 
@@ -42,23 +42,20 @@ jobs:
           username: $DOCKER_USERNAME
           password: $DOCKER_PASSWORD
 
+    working_directory: /app
     steps:
-      - setup_remote_docker:
-          docker_layer_caching: true
-      - run: ls
-      - run: |
-           docker run -d sangukou/react-app:latest npm start &
+      - run: pwd
   
-  start-tests:
-    docker:
-      - image: sangukou/my-cypress:latest
+  # start-tests:
+  #   docker:
+  #     - image: sangukou/my-cypress:latest
 
-    steps:
-      - setup_remote_docker:
-          docker_layer_caching: true
-      - run:
-          name: Start Cypress Tests
-          command: docker run -d sangukou/my-cypress:latest
+  #   steps:
+  #     - setup_remote_docker:
+  #         docker_layer_caching: true
+  #     - run:
+  #         name: Start Cypress Tests
+  #         command: docker run -d sangukou/my-cypress:latest
 
   notify:
     docker:
@@ -93,19 +90,10 @@ workflows:
             tags:
               only:
                 - test
-      - start-tests:
-          requires:
-            - prepare-server
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only:
-                - test
       - notify:
           context: slackNotif
           requires:
-            - start-tests
+            - prepare-server
           filters:
             branches:
               ignore: /.*/
