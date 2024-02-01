@@ -39,7 +39,7 @@ commands:
       - run:
           name: Authentication
           command: |
-              echo "$DOCKER_HUB_TOKEN" | docker login -u "$DOCKER_USERNAME" --password-stdin
+              echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
             
 jobs:
@@ -48,8 +48,13 @@ jobs:
       - image: sangukou/react-app:latest
 
     steps:
-      - login-to-doker-hub
-      - run: echo "hello"
+      - run:
+          name: Login to Docker Hub
+          command: login-to-doker-hub
+      - run:
+          name: Pull Docker image
+          command: |
+              docker pull sangukou/react-app:latest
 
   start-tests:
     docker:
@@ -76,7 +81,7 @@ jobs:
                   "fields": [
                     {
                       "type": "plain_text",
-                      "text": "*hello form circleCI*",
+                      "text": "*test results*",
                       "emoji": true
                     }
                   ]
