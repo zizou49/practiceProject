@@ -44,18 +44,15 @@ jobs:
 
 
     steps:
-      - run:
-          name: Pull Docker image
-          command: |
-              pwd
+      - run: |
+           docker build -t sangukou/react-app:latest .
+  
   start-tests:
     docker:
       - image: sangukou/my-cypress:latest
     steps:
-      - run:
-          name: run tests
-          command: |
-            echo "test lanched"
+      - run: |
+           docker build -t sangukou/my-cypress:latest .
 
   notify:
     docker:
