@@ -26,11 +26,11 @@ version: 2.1
 orbs:
   slack: circleci/slack@4.12.6
 
-executors:
-  ubuntu-22-04:
-    machine:
-      image: ubuntu-2004:202010-01
-      docker_layer_caching: true
+# executors:
+#   ubuntu-22-04:
+#     machine:
+#       image: ubuntu-2004:202010-01
+#       docker_layer_caching: true
 
 
             
@@ -42,9 +42,10 @@ jobs:
           username: $DOCKER_USERNAME
           password: $DOCKER_PASSWORD
 
-
     steps:
       - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
       - run: ls
       - run: |
            docker build -t sangukou/react-app:latest .
@@ -53,6 +54,9 @@ jobs:
     docker:
       - image: sangukou/my-cypress:latest
     steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
       - run: |
            docker build -t sangukou/my-cypress:latest .
 
