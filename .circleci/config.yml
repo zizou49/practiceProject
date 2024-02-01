@@ -44,6 +44,8 @@ jobs:
 
 
     steps:
+      - checkout
+      - run: ls
       - run: |
            docker build -t sangukou/react-app:latest .
   
