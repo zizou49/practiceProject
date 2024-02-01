@@ -43,22 +43,20 @@ jobs:
           password: $DOCKER_PASSWORD
 
     steps:
-      - checkout
       - setup_remote_docker:
           docker_layer_caching: true
       - run: ls
       - run: |
-           docker run sangukou/react-app:latest
+           docker run -d sangukou/react-app:latest
   
   start-tests:
     docker:
       - image: sangukou/my-cypress:latest
     steps:
-      - checkout
       - setup_remote_docker:
           docker_layer_caching: true
       - run: |
-          docker run sangukou/my-cypress:latest
+          docker run -d sangukou/my-cypress:latest
 
   notify:
     docker:
