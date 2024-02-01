@@ -47,7 +47,7 @@ jobs:
           docker_layer_caching: true
       - run: ls
       - run: |
-           docker run -d sangukou/react-app:latest
+           docker run -d sangukou/react-app:latest npm start &
   
   start-tests:
     docker:
