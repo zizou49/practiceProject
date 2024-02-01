@@ -37,25 +37,24 @@ orbs:
 jobs:
   prepare-server:
     docker:
-      - image: sangukou/react-app:latest
+      - image: sangukou/react-app:8
         auth:
           username: $DOCKER_USERNAME
           password: $DOCKER_PASSWORD
 
     working_directory: /app
     steps:
-      - run: ls
+      - run: npm start &
   
-  # start-tests:
-  #   docker:
-  #     - image: sangukou/my-cypress:latest
+  start-tests:
+    docker:
+      - image: sangukou/my-cypress:latest
 
-  #   steps:
-  #     - setup_remote_docker:
-  #         docker_layer_caching: true
-  #     - run:
-  #         name: Start Cypress Tests
-  #         command: docker run -d sangukou/my-cypress:latest
+    working_directory: /app/AutomationUI
+    steps:
+      - run:
+          name: Start Cypress Tests
+          command: npm run localization
 
   notify:
     docker:
@@ -90,10 +89,20 @@ workflows:
             tags:
               only:
                 - test
+      
+      - start-tests:
+          requires: 
+            - prepare-server
+          filters:
+              branches:
+                ignore: /.*/
+              tags:
+                only:
+                  - test
       - notify:
           context: slackNotif
           requires:
-            - prepare-server
+            - start-tests
           filters:
             branches:
               ignore: /.*/
