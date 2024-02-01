@@ -44,7 +44,7 @@ jobs:
 
     working_directory: /app
     steps:
-      - run: pwd
+      - run: ls
   
   # start-tests:
   #   docker:
