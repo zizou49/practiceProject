@@ -1,0 +1,23 @@
+name: Deploy an UAT container
+
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: 'provide a target'
+        default: 'test'
+        required: true
+
+jobs:
+  apply-tag:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Deploy info
+      run: echo "branch => ${GITHUB_REF#refs/heads/} - tag => ${{ github.event.inputs.target }}"
+
+    - name: Setup git tag
+      uses: cardinalby/git-tag-action@master
+      env:
+        TAG: "${{ github.event.inputs.target }}"
+        GITHUB_TOKEN: ${{ secrets.TOKEN }}

@@ -93,7 +93,7 @@ workflows:
               ignore: /.*/
             tags:
               only:
-                - uat
+                - test
       - start-tests:
           requires:
             - prepare-server
@@ -102,7 +102,7 @@ workflows:
               ignore: /.*/
             tags:
               only:
-                - uat
+                - test
       - notify:
           context: slackNotif
           requires:
@@ -112,4 +112,4 @@ workflows:
               ignore: /.*/
             tags:
               only:
-                - uat
+                - test
