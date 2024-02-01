@@ -52,12 +52,14 @@ jobs:
   start-tests:
     docker:
       - image: sangukou/my-cypress:latest
+
     steps:
       - setup_remote_docker:
           docker_layer_caching: true
-      - run: |
-          docker run -d sangukou/my-cypress:latest
-
+      - run:
+          name: Start Cypress Tests
+          command: docker run -d sangukou/my-cypress:latest
+          
   notify:
     docker:
       - image: 'cimg/base:stable'
