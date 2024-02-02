@@ -44,7 +44,7 @@ jobs:
 
     working_directory: /app
     steps:
-      - run: npm start &
+      - run: ls
   
   start-tests:
     docker:
@@ -88,7 +88,7 @@ workflows:
               ignore: /.*/
             tags:
               only:
-                - /^[v]\.?[0-9]+(\.[0-9a-z]+)*$/
+                - test
       
       - start-tests:
           requires: 
@@ -98,7 +98,7 @@ workflows:
                 ignore: /.*/
               tags:
                 only:
-                  - /^[v]\.?[0-9]+(\.[0-9a-z]+)*$/
+                  - test
       - notify:
           context: slackNotif
           requires:
@@ -108,6 +108,4 @@ workflows:
               ignore: /.*/
             tags:
               only:
-                - /^[v]\.?[0-9]+(\.[0-9a-z]+)*$/
-
-# add comment
+                - test
