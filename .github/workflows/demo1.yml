@@ -11,7 +11,7 @@ on:
     push:
       branches:
         - main
-        #- 'dev-*' # dev-new dev-this-is-new
+        #- 'dev-*' # dev-new dev-this-is-newee
         #- 'feat/**' #feat/new feat/new/button
       paths-ignore:
         - '.github/workflows/*'
