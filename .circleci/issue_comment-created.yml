@@ -1,0 +1,21 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - run:
+          name: "Check if this is a PR"
+          command: |
+            if [ -z "${CIRCLE_PULL_REQUEST}" ]; then
+              echo "this is message from issueDDDDDDDDDDDDDD.r"
+            else
+              echo "this is message from issue"
+            fi
+workflows:
+  version: 2
+  build-and-test:
+    jobs:
+      - build
